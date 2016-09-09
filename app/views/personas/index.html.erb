@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Sistema de Salud</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Tipo persona</th>
+      <th>Documento identificacion</th>
+      <th>Nombres</th>
+      <th>Apellidos</th>
+      <th>Foto</th>
+      <th>Biometria</th>
+      <th>Firma</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @personas.each do |persona| %>
+      <tr>
+        <td><%= persona.tipo_persona %></td>
+        <td><%= persona.documento_identificacion %></td>
+        <td><%= persona.nombres %></td>
+        <td><%= persona.apellidos %></td>
+        <td><%= persona.foto %></td>
+        <td><%= persona.biometria %></td>
+        <td><%= persona.firma %></td>
+        <td><%= link_to 'Show', persona %></td>
+        <% if can? :update, Persona %>
+        <td><%= link_to 'Edit', edit_persona_path(persona) %></td>
+        <%end%>
+        <% if can? :destroy, Persona %>
+        <td><%= link_to 'Destroy', persona, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <%end%>
+        
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Persona', new_persona_path %>

@@ -1,0 +1,157 @@
+<%= form_for(@persona) do |f| %>
+  <% if @persona.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@persona.errors.count, "error") %> prohibited this persona from being saved:</h2>
+
+      <ul>
+      <% @persona.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  
+<div class="row container">
+  <h2>IDENTIDAD</h2>
+    <div class="col m12">
+      <div class="field">
+    <% lista_tp = {
+      'Paciente' => 'Paciente',
+      'Paciente Potencial' => 'Ppotencial',
+      'RRHH' => 'RRHH'
+      }%>
+    <%= f.label :tipo_persona, "Tipo de Usuario" %>
+    <%= f.select :tipo_persona, lista_tp %>
+  </div>
+
+  <div class="field">
+    <%lista_i = {
+      'C.C' => 'c.c',
+      'T.I' => 'TI'
+      }%>
+    <%= f.label :tipo_documento, "Tipo de Documento de Identificación" %>
+    <%= f.select :tipo_documento, lista_i %>
+  </div>
+
+  <div class="field">
+    <%= f.label :documento_identificacion, "Numero de Documento de Identificación" %>
+    <%= f.text_field :documento_identificacion %>
+  </div>
+
+  <div class="field">
+    <%= f.label :nombres, "Nombres Completos" %>
+    <%= f.text_field :nombres %>
+  </div>
+
+  <div class="field">
+    <%= f.label :apellidos, "Apellidos Completos" %>
+    <%= f.text_field :apellidos %>
+  </div>
+
+  <div class="field">
+    <% lista = {
+      'Masculino' => 'Masculino',
+      'Femenino' => 'Femenino'
+      }%>
+    <%= f.label :sexo, "Sexo" %>
+    <%= f.select :sexo, lista %>
+  </div>
+
+  <div class="field">
+    <%= f.label :lugar_nacimiento, "Lugar de Nacimiento" %>
+    <%= f.text_field :lugar_nacimiento %>
+  </div>
+
+  <div class="row">
+  <div class="col m2 nn">
+    
+      <div class="field">
+      <%= f.label :fecha_nacimiento, "Fecha de Nacimiento" %>
+<%= f.date_select :fecha_nacimiento, {order: [:month, :day, :year], prompt: { day: 'Select day', month: 'Select month', year: 'Select year' }, start_year: 1985, end_year: 2016}, {required: true} %>    </div>
+  </div>
+  </div>
+
+  <h2>INFORMACION CONTACTO</h2>
+
+  <div class="items">
+    <%= f.nested_fields_for :InformacionContacts do |h| %>
+      <fieldset class="item">
+        <%= h.label :Telefono %>
+        <%= h.text_field :telefono %>
+        <%= h.label :Celular %>
+        <%= h.text_field :celular %>
+        <%= h.label :Email %>
+        <%= h.text_field :email %>
+
+        <a href="" class="remove">remove</a>
+
+        <%= h.hidden_field :id %>
+        <%= h.hidden_field :_destroy %>
+      </fieldset>
+
+    <% end %>
+    
+  </div>
+  <a href="#" class="add waves-effect waves-light btn"><i class="material-icons left">cloud</i>Presione Adicionar Información Contacto</a>
+
+<h2>INFORMACION DE UBICACION</h2>
+
+  <div class="field">
+    <%= f.label :poblacion, "Ciudad Donde Reside" %>
+    <%= f.text_field :poblacion %>
+  </div>
+
+  <div class="field">
+    <%= f.label :ocupacion, "Ocupacion Laboral" %>
+    <%= f.text_field :ocupacion %>
+  </div>
+
+  <div class="field">
+    <%= f.label :direccion, "Direccion" %>
+    <%= f.text_field :direccion %>
+  </div>
+
+<h2>PERSONA CONTACTO</h2>
+  <div class="field">
+    <%= f.label :personacn, "Nombre Completo" %>
+    <%= f.text_field :personacn %>
+  </div>
+
+  <div class="field">
+    <%= f.label :personaca, "Apellido Completo" %>
+    <%= f.text_field :personaca %>
+  </div>
+
+  <div class="field">
+    <% lista_c = {
+      'Familiar' => 'Familiar',
+      'Amigo' => 'Amigo',
+      'Tutor' => 'Tutor'
+      }%>
+    <%= f.label :personacp, "Parentesco Contacto" %>
+    <%= f.select :personacp, lista_c %>
+  </div>
+
+<h2>OTROS DATOS</h2>
+  <div class="field">
+    <%= f.label :avatar, "Foto" %><br />
+    <%= f.file_field :avatar %>
+</div>
+
+  <div class="field">
+    <%= f.label :biometria, "Biometria" %>
+    <%= f.text_field :biometria %>
+  </div>
+
+  <div class="field">
+    <%= f.label :firma, "Firma" %>
+    <%= f.text_field :firma %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+  </div>
+</div>
+<% end %>

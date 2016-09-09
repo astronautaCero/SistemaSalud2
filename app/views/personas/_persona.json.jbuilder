@@ -1,0 +1,2 @@
+json.extract! persona, :id, :tipo_persona, :documento_identificacion, :nombres, :apellidos, :sexo, :lugar_nacimiento, :fecha_nacimiento, :poblacion, :ocupacion, :direccion, :foto, :biometria, :firma, :created_at, :updated_at
+json.url persona_url(persona, format: :json)

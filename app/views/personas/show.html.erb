@@ -1,0 +1,68 @@
+<h1>Información Persona</h1>
+<p>
+  <strong>Tipo persona:</strong>
+  <%= @persona.tipo_persona %>
+</p>
+
+<p>
+  <strong>Documento identificacion:</strong>
+  <%= @persona.documento_identificacion %>
+</p>
+
+<p>
+  <strong>Nombres:</strong>
+  <%= @persona.nombres %>
+</p>
+
+<p>
+  <strong>Apellidos:</strong>
+  <%= @persona.apellidos %>
+</p>
+
+<p>
+  <strong>Sexo:</strong>
+  <%= @persona.sexo %>
+</p>
+
+<p>
+  <strong>Lugar nacimiento:</strong>
+  <%= @persona.lugar_nacimiento %>
+</p>
+
+<p>
+  <strong>Fecha nacimiento:</strong>
+  <%= @persona.fecha_nacimiento %>
+</p>
+
+<p>
+  <strong>Ciudad donde Reside:</strong>
+  <%= @persona.poblacion %>
+</p>
+
+<p>
+  <strong>Ocupacion:</strong>
+  <%= @persona.ocupacion %>
+</p>
+
+<p>
+  <strong>Direccion:</strong>
+  <%= @persona.direccion %>
+</p>
+
+<p>
+  <strong>Foto:</strong>
+  <%= @persona.foto %>
+</p>
+
+<p>
+  <strong>Biometria:</strong>
+  <%= @persona.biometria %>
+</p>
+
+<p>
+  <strong>Firma:</strong>
+  <%= @persona.firma %>
+</p>
+
+<%= link_to 'Edit', edit_persona_path(@persona) %> |
+<%= link_to 'Back', personas_path %>
